@@ -16,7 +16,7 @@ public class TicTacToeGame {
             board[i] = ' ';
         }
     }
-    // method checks player letter choice and sets
+    // method checks player letter choice and sets letters for game
     static void playerChoice(){
         System.out.println("Choose letter X or O to play game");
         Scanner sc=new Scanner(System.in);
@@ -28,8 +28,8 @@ public class TicTacToeGame {
                 computerLetter='O';
                 break;
             case 'O':
-                System.out.println("Player Plays: O ");
-                System.out.println("Computer Plays: X");
+                System.out.println("Player Plays with : O letter");
+                System.out.println("Computer Plays with : X letter");
                 computerLetter='X';
                 break;
             default:
