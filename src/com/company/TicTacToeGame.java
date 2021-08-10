@@ -6,16 +6,19 @@ package com.company;
 public class TicTacToeGame {
     //variables
     static char[] board=new char[10];
+
     // method to assign empty spaces to board
-    static void boardTicTacToe(){
+    static void boardCreate(){
+        // 0th index ignored
         for(int i=1;i<board.length;i++) {
             board[i] = ' ';
         }
     }
 
     public static void main(String[] args) {
+        // displaying welcome message
         System.out.println("Welcome to Tic Tac Toe Game");
-        // game board defined
-        boardTicTacToe();
+        // game board created
+        boardCreate();
     }
 }
