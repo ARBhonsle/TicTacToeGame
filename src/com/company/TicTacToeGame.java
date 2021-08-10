@@ -3,7 +3,7 @@ package com.company;
 import java.util.Scanner;
 
 /**
- * Tic Tac Toe Game designed: Board made using char array
+ * Tic Tac Toe Game designed: Board made using char array, player chooses letter(O or X) to start game
  */
 public class TicTacToeGame {
     //variables
@@ -16,15 +16,15 @@ public class TicTacToeGame {
             board[i] = ' ';
         }
     }
-    // method checks player letter choice and sets letters for game
+    // method to let player choose letter(O or X) and sets it for playing game
     static void playerChoice(){
         System.out.println("Choose letter X or O to play game");
         Scanner sc=new Scanner(System.in);
         playerLetter=sc.next().toUpperCase().charAt(0);
         switch(playerLetter){
             case 'X':
-                System.out.println("Player Plays: X ");
-                System.out.println("Computer Plays: O ");
+                System.out.println("Player Plays with : X letter");
+                System.out.println("Computer Plays with : O letter");
                 computerLetter='O';
                 break;
             case 'O':
