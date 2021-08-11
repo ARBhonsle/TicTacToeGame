@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 /**
  * Tic Tac Toe Game designed: Board made using char array, player chooses letter(O or X) to start game
+ * Additional: Game Board Displayed
  */
 public class TicTacToeGame {
     //variables
@@ -37,6 +38,14 @@ public class TicTacToeGame {
                 break;
         }
     }
+    // displays game board
+    static void displayBoard(){
+        // 0th index ignored
+        System.out.println("Tic Tac Toe Game Board");
+        System.out.println(board[1]+" | "+board[2]+" | "+board[3]);
+        System.out.println(board[4]+" | "+board[5]+" | "+board[6]);
+        System.out.println(board[7]+" | "+board[8]+" | "+board[9]);
+    }
 
     public static void main(String[] args) {
         // displaying welcome message
@@ -44,5 +53,6 @@ public class TicTacToeGame {
         // game board created
         boardCreate();
         playerChoice();
+        displayBoard();
     }
 }
