@@ -67,6 +67,23 @@ public class TicTacToeGame {
         displayBoard();
     }
 
+    //check for free space before making move for computer
+    static void computerPlay() {
+        // generates move for computer using random function
+        // while loop runs until flag true, flag becomes false on making a move
+        boolean played = false;
+        while(!played) {
+            int playMove = (int) (Math.random() * 10) % 9 + 1;
+            if (playMove>0 && playMove<10){
+                if (board[playMove] == ' ') {
+                    board[playMove] = computerLetter;
+                    played = true;
+                }
+            }
+        }
+        displayBoard();
+    }
+
     public static void main(String[] args) {
         // displaying welcome message
         System.out.println("Welcome to Tic Tac Toe Game");
@@ -75,5 +92,6 @@ public class TicTacToeGame {
         playerChoice();
         displayBoard();
         userPlay();
+        computerPlay();
     }
 }
