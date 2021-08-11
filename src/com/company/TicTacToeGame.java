@@ -6,6 +6,7 @@ import java.util.Scanner;
  * Tic Tac Toe Game designed: Board made using char array, player chooses letter(O or X) to start game
  * Added: Game Board Displayed
  *      ++ User can make a move
+ *      ++Computer moves
  */
 public class TicTacToeGame {
     //variables
