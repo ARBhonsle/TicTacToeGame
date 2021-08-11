@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 /**
  * Tic Tac Toe Game designed: Board made using char array, player chooses letter(O or X) to start game
- * Additional: Game Board Displayed
+ * Added: Game Board Displayed
+ *      ++ User can make a move
  */
 public class TicTacToeGame {
     //variables
@@ -46,6 +47,25 @@ public class TicTacToeGame {
         System.out.println(board[4]+" | "+board[5]+" | "+board[6]);
         System.out.println(board[7]+" | "+board[8]+" | "+board[9]);
     }
+    // method makes move to location/index given by Player(user)
+    static void userPlay(){
+        boolean played = false;
+        while(!played) {
+            System.out.println("Give board index(1-9) to set your game move ");
+            Scanner sc =new Scanner(System.in);
+            int playMove=sc.nextInt();
+            if (playMove>0 && playMove<10){
+                if (board[playMove] == ' ') {
+                    board[playMove] = playerLetter;
+                    played = true;
+                }
+            }
+            else {
+                System.out.println("Select another index");
+            }
+        }
+        displayBoard();
+    }
 
     public static void main(String[] args) {
         // displaying welcome message
@@ -54,5 +74,6 @@ public class TicTacToeGame {
         boardCreate();
         playerChoice();
         displayBoard();
+        userPlay();
     }
 }
