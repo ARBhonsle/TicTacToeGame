@@ -104,6 +104,64 @@ public class TicTacToeGame {
         }
         return start;
     }
+    // method to check for wining player
+    public static char playerWon(char[] board){
+        // 1 2 3
+        // 4 5 6
+        // 7 8 9
+        //char[] board = {' ','X','X','X',
+        //                    'X','X','X',
+        //                    'X','X','X'};
+        int[][] tictac = {{1,2,3},{4,5,6},{7,8,9},{1,5,9},{3,5,7},{1,4,7},{2,5,8},{3,6,9}};
+        char won = 'N';
+        for(int i=0;i<tictac.length;i++){
+            if(board[tictac[i][0]] == board[tictac[i][1]] && board[tictac[i][1]] == board[tictac[i][2]]){
+                if(board[tictac[i][0]]!=' '){
+                    won = board[tictac[i][0]];
+                    break;
+                }
+            }
+        }
+        return won;
+    }
+    // method to check for empty spaces on game board
+    public static boolean isBoardFilled(char[] board){
+        boolean filled = true;
+        for(int i=1;i<board.length;i++){
+            if(board[i]==' '){
+                filled = false;
+                break;
+            }
+        }
+        return filled;
+    }
+    // method to check game state
+    public static char getGameState(char[] board,char user,char computer,char current) {
+        char won = playerWon(board);
+        char flip = ' ', state = ' ';
+        if (current == user) {
+            flip = computer;
+        } else {
+            flip = user;
+        }
+        switch (won) {
+            case 'N':
+                state = flip;
+                break;
+            case 'X':
+                System.out.println("X has won the game");
+                state = 'E';
+                break;
+            case 'O':
+                System.out.println("O has won the game");
+                state = 'E';
+                break;
+        }
+        if (isBoardFilled(board)) {
+            state = 'E';
+        }
+        return state;
+    }
 
     public static void main(String[] args) {
         // displaying welcome message
@@ -112,15 +170,20 @@ public class TicTacToeGame {
         boardCreate();
         playerChoice();
         displayBoard();
-        if(startingPlayer(playerLetter,computerLetter)==playerLetter){
+        char start = startingPlayer(playerLetter,computerLetter);
+        if(start==playerLetter){
             System.out.println("Player wins coin toss, start first");
-            userPlay();
-            computerPlay();
         }else{
             System.out.println("Player loses coin toss, computer starts first");
-            computerPlay();
-            userPlay();
         }
-
+        char gameState='N';
+        while (gameState!='E'){
+            if(gameState==playerLetter) {
+                userPlay();
+            }else if (gameState==computerLetter){
+                computerPlay();
+            }
+            gameState = getGameState(board,playerLetter,computerLetter,playerLetter);
+        }
     }
 }
