@@ -7,6 +7,7 @@ import java.util.Scanner;
  * Added: Game Board Displayed
  *      ++ User can make a move
  *      ++Computer moves
+ *      ++Coin Toss result to decide starting player
  */
 public class TicTacToeGame {
     //variables
@@ -84,6 +85,25 @@ public class TicTacToeGame {
         }
         displayBoard();
     }
+    // method to check for starting player through coin toss result
+    public static char startingPlayer(char user,char computer){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Heads(H) or Tails(T):");
+        char userChoice = sc.next().toUpperCase().toCharArray()[0];
+        char start = ' ';
+        int coinToss = (int) (Math.random() * 10) % 2;
+        char coin ='H';
+        switch(coinToss){
+            case 0: coin = 'H';break;
+            case 1: coin = 'T';break;
+        }
+        if(coin == userChoice){
+            start = user;
+        }else{
+            start = computer;
+        }
+        return start;
+    }
 
     public static void main(String[] args) {
         // displaying welcome message
@@ -92,7 +112,15 @@ public class TicTacToeGame {
         boardCreate();
         playerChoice();
         displayBoard();
-        userPlay();
-        computerPlay();
+        if(startingPlayer(playerLetter,computerLetter)==playerLetter){
+            System.out.println("Player wins coin toss, start first");
+            userPlay();
+            computerPlay();
+        }else{
+            System.out.println("Player loses coin toss, computer starts first");
+            computerPlay();
+            userPlay();
+        }
+
     }
 }
