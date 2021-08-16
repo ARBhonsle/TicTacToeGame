@@ -69,13 +69,21 @@ public class TicTacToeGame {
         displayBoard();
     }
 
-    //check for free space before making move for computer
+     // generates move for smart computer if wining move possible, blocks if losing game else using random function
     static void computerPlay() {
+        //check for free space before making move for computer
         // generates move for smart computer if wining move possible else using random function
         // while loop runs until flag true, flag becomes false on making a move
         int placeWin = winningPosition(computerLetter,board);
-        if(placeWin!= -1){
+        int losing =  winningPosition(playerLetter,board);
+        boolean placed = false;
+        if (losing !=-1){
+            board[losing] = computerLetter;
+            placed = true;
+        }
+        else if(placeWin!= -1){
             board[placeWin] = computerLetter;
+            placed = true;
         }else{
             boolean played = false;
             while(!played) {
@@ -174,12 +182,12 @@ public class TicTacToeGame {
         for(int i=0;i<tictac.length;i++){
             if(board[tictac[i][0]]== userChoice && board[tictac[i][0]] == board[tictac[i][1]] && board[tictac[i][2]]==' '){
                 if(board[tictac[i][0]]!=' '){
-                    place = tictac[i][0];
+                    place = tictac[i][2];
                 }
             }
             if(board[tictac[i][0]]== userChoice && board[tictac[i][0]] == board[tictac[i][2]] && board[tictac[i][1]]==' '){
                 if(board[tictac[i][0]]!=' '){
-                    place = tictac[i][0];
+                    place = tictac[i][1];
                 }
             }
             if(board[tictac[i][1]]== userChoice && board[tictac[i][1]] == board[tictac[i][2]] && board[tictac[i][0]]==' '){
