@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -13,6 +14,7 @@ import java.util.Scanner;
  *      ++Computer makes moves at corners
  *      ++Computer place move at center or remaining sides
  *      ++Game Played Until over
+ *      ++Game played again
  */
 public class TicTacToeGame {
     //variables
@@ -239,9 +241,21 @@ public class TicTacToeGame {
         // displaying welcome message
         System.out.println("Welcome to Tic Tac Toe Game");
         // game board created
-        boardCreate();
-        playerChoice();
-        displayBoard();
-        playTillEnd(playerLetter,board,computerLetter);
+        boolean playAgain=false;
+        Scanner sc=new Scanner(System.in);
+        do{
+            boardCreate();
+            playerChoice();
+            displayBoard();
+            playTillEnd(playerLetter,board,computerLetter);
+            System.out.println("Do you want to continue?");
+            System.out.println("Press y for Yes, n for No");
+            char choice=sc.next().toLowerCase(Locale.ROOT).charAt(0);
+            switch (choice){
+                case 'n': playAgain=false; break;
+                case 'y': playAgain=true; break;
+                default: System.out.println("Incorrect Input"); break;
+            }
+        }while(playAgain);
     }
 }
