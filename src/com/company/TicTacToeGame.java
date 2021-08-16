@@ -186,8 +186,6 @@ public class TicTacToeGame {
                 computerPlay();
                 gameState=getGameState(board,playerLetter,computerLetter,gameState);
             }
-
-
         }
     }
 }
