@@ -12,6 +12,7 @@ import java.util.Scanner;
  *      ++Computer makes blocking moves
  *      ++Computer makes moves at corners
  *      ++Computer place move at center or remaining sides
+ *      ++Game Played Until over
  */
 public class TicTacToeGame {
     //variables
@@ -209,14 +210,13 @@ public class TicTacToeGame {
         }
         return place;
     }
-
-    public static void main(String[] args) {
-        // displaying welcome message
-        System.out.println("Welcome to Tic Tac Toe Game");
-        // game board created
-        boardCreate();
-        playerChoice();
-        displayBoard();
+    // play game until over
+    public static void playTillEnd(char playerLetter,char[] board,char computerLetter){
+        //place board
+        // 1 2 3
+        // 4 5 6
+        // 7 8 9
+        //char[] board
         char start = startingPlayer(playerLetter,computerLetter);
         if(start==playerLetter){
             System.out.println("Player wins coin toss, start first");
@@ -234,5 +234,14 @@ public class TicTacToeGame {
                 gameState=getGameState(board,playerLetter,computerLetter,gameState);
             }
         }
+    }
+    public static void main(String[] args) {
+        // displaying welcome message
+        System.out.println("Welcome to Tic Tac Toe Game");
+        // game board created
+        boardCreate();
+        playerChoice();
+        displayBoard();
+        playTillEnd(playerLetter,board,computerLetter);
     }
 }
