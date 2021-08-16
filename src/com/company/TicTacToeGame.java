@@ -176,14 +176,18 @@ public class TicTacToeGame {
         }else{
             System.out.println("Player loses coin toss, computer starts first");
         }
-        char gameState='N';
+        char gameState=getGameState(board,playerLetter,computerLetter,start);
         while (gameState!='E'){
             if(gameState==playerLetter) {
                 userPlay();
-            }else if (gameState==computerLetter){
-                computerPlay();
+                gameState=getGameState(board,playerLetter,computerLetter,gameState);
             }
-            gameState = getGameState(board,playerLetter,computerLetter,playerLetter);
+            if (gameState==computerLetter){
+                computerPlay();
+                gameState=getGameState(board,playerLetter,computerLetter,gameState);
+            }
+
+
         }
     }
 }
