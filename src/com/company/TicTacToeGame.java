@@ -210,7 +210,7 @@ public class TicTacToeGame {
         }
         return place;
     }
-    // play game until over
+    // play game until end
     public static void playTillEnd(char playerLetter,char[] board,char computerLetter){
         //place board
         // 1 2 3
