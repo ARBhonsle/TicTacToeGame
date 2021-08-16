@@ -176,7 +176,7 @@ public class TicTacToeGame {
         }else{
             System.out.println("Player loses coin toss, computer starts first");
         }
-        char gameState=getGameState(board,playerLetter,computerLetter,start);
+        char gameState=start;
         while (gameState!='E'){
             if(gameState==playerLetter) {
                 userPlay();
