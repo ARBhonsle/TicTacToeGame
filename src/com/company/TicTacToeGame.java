@@ -8,6 +8,8 @@ import java.util.Scanner;
  *      ++ User can make a move
  *      ++Computer moves
  *      ++Coin Toss result to decide starting player
+ *      ++Computer makes wining moves
+ *      ++Computer makes blocking moves
  */
 public class TicTacToeGame {
     //variables
