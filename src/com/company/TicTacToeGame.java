@@ -10,6 +10,7 @@ import java.util.Scanner;
  *      ++Coin Toss result to decide starting player
  *      ++Computer makes wining moves
  *      ++Computer makes blocking moves
+ *      ++Computer makes moves at corners
  */
 public class TicTacToeGame {
     //variables
@@ -75,17 +76,24 @@ public class TicTacToeGame {
         //check for free space before making move for computer
         // generates move for smart computer if wining move possible or blocks if losing game else using random function
         // while loop runs until flag true, flag becomes false on making a move
+        int[] border = {1,3,7,9};
         int placeWin = winningPosition(computerLetter,board);
         int losing =  winningPosition(playerLetter,board);
-        boolean placed = false;
         if (losing !=-1){
             board[losing] = computerLetter;
-            placed = true;
         }
         else if(placeWin!= -1){
             board[placeWin] = computerLetter;
-            placed = true;
-        }else{
+        }
+        else if (losing == -1 && placeWin ==-1){
+            for(int i=0;i<border.length;i++){
+                if(board[border[i]] == ' '){
+                    board[border[i]]=computerLetter;
+                    break;
+                }
+            }
+        }
+        else{
             boolean played = false;
             while(!played) {
                 int playMove = (int) (Math.random() * 10) % 9 + 1;
