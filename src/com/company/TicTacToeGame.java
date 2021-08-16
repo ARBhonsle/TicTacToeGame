@@ -11,6 +11,7 @@ import java.util.Scanner;
  *      ++Computer makes wining moves
  *      ++Computer makes blocking moves
  *      ++Computer makes moves at corners
+ *      ++Computer place move at center or remaining sides
  */
 public class TicTacToeGame {
     //variables
@@ -71,12 +72,13 @@ public class TicTacToeGame {
         }
         displayBoard();
     }
-     // generates move for smart computer to take corners, wining move if possible, blocks if losing game, else using random function
+     // generates move for smart computer to take corners, wining move if possible, blocks if losing game, else place move at center or remaining sides
     static void computerPlay() {
         //check for free space before making move for computer
         // generates move for smart computer if wining move possible or blocks if losing game else using random function
         // while loop runs until flag true, flag becomes false on making a move
         int[] border = {1,3,7,9};
+        int[] places = {2,4,6,8};
         int placeWin = winningPosition(computerLetter,board);
         int losing =  winningPosition(playerLetter,board);
         if (losing !=-1){
@@ -94,13 +96,13 @@ public class TicTacToeGame {
             }
         }
         else{
-            boolean played = false;
-            while(!played) {
-                int playMove = (int) (Math.random() * 10) % 9 + 1;
-                if (playMove>0 && playMove<10){
-                    if (board[playMove] == ' ') {
-                        board[playMove] = computerLetter;
-                        played = true;
+            if(board[5]==' '){
+                board[5]=computerLetter;
+            }else{
+                for(int i=0;i<places.length;i++){
+                    if(board[places[i]] == ' '){
+                        board[places[i]]=computerLetter;
+                        break;
                     }
                 }
             }
