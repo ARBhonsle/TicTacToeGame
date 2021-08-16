@@ -72,7 +72,7 @@ public class TicTacToeGame {
      // generates move for smart computer if wining move possible, blocks if losing game else using random function
     static void computerPlay() {
         //check for free space before making move for computer
-        // generates move for smart computer if wining move possible else using random function
+        // generates move for smart computer if wining move possible or blocks if losing game else using random function
         // while loop runs until flag true, flag becomes false on making a move
         int placeWin = winningPosition(computerLetter,board);
         int losing =  winningPosition(playerLetter,board);
